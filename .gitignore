@@ -1,0 +1,55 @@
+# Virtual environments
+venv/
+env/
+crop_env/
+crop_ai_env/
+.venv/
+
+# Python cache and bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Editor configuration
+.vscode/
+.idea/
+
+# Data files (preserve folder structure)
+data/**/*.csv
+!data/.gitkeep
+
+# Model artifacts (allow curated exports under src/models)
+*.pkl
+*.joblib
+!src/models/**/*.pkl
+!src/models/**/*.joblib
+
+# Logs and temporary files
+logs/
+*.log
+tmp/
+*.tmp
+.pytest_cache/
+.cache/
+
+# Build and distribution outputs
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Arduino compiled artifacts
+*.hex
+*.elf
+
+# System files
+Thumbs.db
+.DS_Store
+
+# Secrets and credentials
+.env
+.secrets
+credentials.json
