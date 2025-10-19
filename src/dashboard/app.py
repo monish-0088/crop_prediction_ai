@@ -9,7 +9,12 @@ from typing import Dict, Tuple
 import requests
 import streamlit as st
 
-DEFAULT_BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000/predict")
+# Prefer env var (Streamlit Cloud secrets), else default to deployed Render URL,
+# and finally fall back to local development.
+DEFAULT_BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    os.getenv("RENDER_BACKEND_URL", "https://crop-prediction-ai.onrender.com/predict"),
+)
 MODEL_ACCURACY = 0.94  # Based on validation performance during training
 EMOJIS = ("🌾", "🌽", "🌻", "🥕", "🍅", "🥒")
 

@@ -168,3 +168,13 @@ async def predict(payload: PredictionRequest) -> Dict[str, str]:
         raise HTTPException(status_code=500, detail="Prediction failed") from exc
 
     return {"prediction": crop}
+
+
+@app.get("/")
+async def root() -> Dict[str, str]:
+    """Simple health endpoint with pointer to the prediction route."""
+
+    return {
+        "status": "ok",
+        "message": "Use POST /predict with soil and climate fields to get a crop recommendation.",
+    }
