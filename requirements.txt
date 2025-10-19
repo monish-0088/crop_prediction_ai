@@ -12,6 +12,11 @@ joblib==1.4.2
 matplotlib==3.9.2
 streamlit==1.39.0
 
+# Backend API
+fastapi==0.115.4
+uvicorn[standard]==0.32.1
+httpx==0.27.2
+
 # Hardware communication
 pyserial==3.5
 
