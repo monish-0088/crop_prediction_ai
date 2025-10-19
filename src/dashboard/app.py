@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import logging
+import os
 from typing import Dict, Tuple
 
 import requests
 import streamlit as st
 
-DEFAULT_BACKEND_URL = "http://127.0.0.1:8000/predict"
+DEFAULT_BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000/predict")
 MODEL_ACCURACY = 0.94  # Based on validation performance during training
 EMOJIS = ("🌾", "🌽", "🌻", "🥕", "🍅", "🥒")
 

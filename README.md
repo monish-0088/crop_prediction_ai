@@ -35,14 +35,22 @@
 	```powershell
 	pip install -r requirements.txt
 	```
-3. Launch the Streamlit dashboard:
+3. Train the model (generates `src/models/best_model.pkl`):
+	```powershell
+	python -m src.model_trainer
+	```
+4. Start the FastAPI backend:
+	```powershell
+	uvicorn src.backend.api_server:app --reload
+	```
+5. In a second terminal, launch the Streamlit dashboard:
 	```powershell
 	streamlit run src/dashboard/app.py
 	```
 
 ## 📊 Dataset
 - Source: [Kaggle Crop Recommendation Data](https://www.kaggle.com/datasets/aksahaha/crop-recommendation/data)
-- Place the downloaded CSV at `data/crop_data.csv`; the pipeline assumes this path.
+- Place the downloaded CSV at `data/Crop_recommendation.csv`; the pipeline assumes this path.
 
 ## 🤖 ML Pipeline
 - Preprocess soil nutrient and climate variables using `pandas` transformations.
@@ -60,8 +68,16 @@
 ## 🧼 License
 - Licensed under the MIT License. Review `LICENSE` for details.
 
+## 🚀 Container Deployment
+- Build and run the backend + dashboard together using Docker Compose:
+	```powershell
+	docker compose up --build
+	```
+- The FastAPI API becomes available at `http://localhost:8000`, and the Streamlit dashboard at `http://localhost:8501`.
+- Pass a custom backend URL to Streamlit by setting `BACKEND_URL` (already configured as `http://backend:8000/predict` in `docker-compose.yml`).
+
 ## ✅ Future Work
 - Integrate actual Arduino sensor firmware and serial ingestion.
 - Enable real-time telemetry streaming and alerting.
-- Package the dashboard and backend for cloud deployment.
+- Deploy the container stack to a cloud host (Render, Railway, Azure App Service, etc.).
 

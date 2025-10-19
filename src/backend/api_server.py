@@ -12,12 +12,21 @@ from typing import Any, Dict, Tuple
 import joblib
 import numpy as np
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 LOGGER = logging.getLogger(__name__)
 MODEL_ARTIFACT_PATH = Path("src/models/best_model.pkl")
 
 app = FastAPI(title="Crop Prediction API", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 _model = None
 _label_encoder = None
